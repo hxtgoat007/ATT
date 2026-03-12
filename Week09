@@ -1,0 +1,46 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Week9 {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.manage().window().maximize();
+
+        driver.get("https://www.google.com/");
+
+        Thread.sleep(5000);
+
+        WebElement searchBox = driver.findElement(By.name("q"));
+
+        Thread.sleep(1000);
+        searchBox.sendKeys("just");
+
+        Thread.sleep(500);
+        searchBox.sendKeys("dial");
+
+        Thread.sleep(1000);
+
+        List<WebElement> suggestions = driver.findElements(
+                By.xpath("//ul[@role='listbox']//li"));
+
+        System.out.println("Number of suggestion list items: " + suggestions.size());
+
+        Thread.sleep(1000);
+
+        for (WebElement item : suggestions) {
+            System.out.println(item.getText());
+            Thread.sleep(1000);
+        }
+
+        Thread.sleep(5000);
+
+        driver.quit();
+    }
+}
