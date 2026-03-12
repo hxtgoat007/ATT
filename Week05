@@ -1,0 +1,28 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Week5 {
+
+	public static void main(String[] args) throws InterruptedException{
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://cmrithyderabad.edu.in/");
+		WebElement pop=driver.findElement(By.id("closePopup"));
+		pop.click();
+		Thread.sleep(500);
+		WebElement academics=driver.findElement(By.xpath("(//a[normalize-space()='ACADEMICS'])"));
+		academics.click();
+		Thread.sleep(500);
+		WebElement syllabus=driver.findElement(By.xpath("(//a[normalize-space()='SYLLABUS'])"));
+		syllabus.click();
+		Thread.sleep(500);
+		WebElement btech=driver.findElement(By.xpath("(//a[normalize-space()='B.Tech Syllabus'])"));
+		btech.click();
+		Thread.sleep(500);
+		WebElement csdr22 = driver.findElement(By.xpath("(//a[normalize-space()='CSE (Data Science)'])"));
+	  csdr22.click();
+	  Thread.sleep(500);
+	}
+}
