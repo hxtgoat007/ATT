@@ -8,12 +8,11 @@ public class Week7 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub  
-System.setProperty("WebDriver.chrome driver","" );
-WebDriver driver=new ChromeDriver(); 
-driver.get("https://www.google.com/");
-WebElement searchBar=driver.findElement(By.name("q"));
-searchBar.sendKeys("cmrit hyderabad");
-searchBar.sendKeys(Keys.ENTER);
+		System.setProperty("WebDriver.chrome driver","" );
+		WebDriver driver=new ChromeDriver(); 
+		driver.get("https://www.google.com/");
+		WebElement searchBar=driver.findElement(By.name("q"));
+		searchBar.sendKeys("cmrit hyderabad");
+		searchBar.sendKeys(Keys.ENTER);
 	}
-
 }
