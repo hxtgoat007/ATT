@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class WEEK8 {
 	 public static void main(String[] args) throws InterruptedException, AWTException {
-  		System.setProperty("WebDriver.chromedriver","D:\\6702 A\\chromedriver-win64\\ChromeDriver.exe");
+  		System.setProperty("WebDriver.chromedriver","");
   		WebDriver driver=new ChromeDriver();
   		driver.manage().window().maximize();
   		driver.get("https://duckduckgo.com/");
