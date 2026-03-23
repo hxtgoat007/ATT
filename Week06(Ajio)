@@ -6,37 +6,38 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Week06 {
+public class Week6 {
 
-    public static void main(String[] args) throws InterruptedException{
-
+    public static void main(String[] args) {
+    
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-
+        
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         driver.get("https://ajio.com");
-
+        
         WebElement signIn = wait.until(
-                ExpectedConditions.elementToBeClickable(
-                        By.xpath("//span[normalize-space()='Sign In / Join AJIO']")
-                )
+                        ExpectedConditions.elementToBeClickable(
+                                By.xpath("//span[normalize-space()='Sign In / Join AJIO']")
+                        )
         );
         signIn.click();
-        Thread.sleep(2000);
-
-        WebElement mobileInput = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.id("mobileNumber"))
-        );
-        mobileInput.sendKeys("9876543210");
-        Thread.sleep(2000);
-
-        WebElement continueBtn = wait.until(
-                ExpectedConditions.elementToBeClickable(By.className("login-btn"))
-        );
-        continueBtn.click();
-        Thread.sleep(8000);
-
+        WebElement joinAjio = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.xpath("//span[normalize-space()='Join AJIO']")
+                        )
+         );
+        joinAjio.click();
+        
+        driver.findElement(By.name("name")).sendKeys("Mohan");
+        
+        driver.findElement(By.name("email")).sendKeys("mohan@gmail.com");
+        driver.findElement(By.name("password")).sendKeys("Mohan");
+        
+        driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
+        
+        System.out.println("Registration successful");
+        
         driver.quit();
     }
 }
