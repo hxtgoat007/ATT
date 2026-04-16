@@ -1,29 +1,47 @@
+package week5;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Week5 {
 
-	public static void main(String[] args) throws InterruptedException{
-        System.setProperty("WebDriver.chromedriver","D:\\6702 A\\chromedriver-win64\\ChromeDriver.exe");
-		WebDriver driver= new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://cmrithyderabad.edu.in/");
-		WebElement pop=driver.findElement(By.id("closePopup"));
-		pop.click();
-		Thread.sleep(500);
-		WebElement academics=driver.findElement(By.xpath("(//a[normalize-space()='ACADEMICS'])"));
-		academics.click();
-		Thread.sleep(500);
-		WebElement syllabus=driver.findElement(By.xpath("(//a[normalize-space()='SYLLABUS'])"));
-		syllabus.click();
-		Thread.sleep(500);
-		WebElement btech=driver.findElement(By.xpath("(//a[normalize-space()='B.Tech Syllabus'])"));
-		btech.click();
-		Thread.sleep(500);
-		WebElement csdr22 = driver.findElement(By.xpath("(//a[normalize-space()='CSE (Data Science)'])"));
-	  csdr22.click();
-	  Thread.sleep(500);
-	}
+    public static void main(String[] args) throws InterruptedException {
+
+    
+        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\win64\\chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.manage().window().maximize();
+
+        
+        driver.get("https://www.google.com");
+
+        
+        driver.get("https://cmrthyderabad.edu.in/");
+
+       
+        driver.findElement(By.xpath("//button[@id='closepopup']")).click();
+
+       
+        driver.findElement(By.xpath("(//a[text()='ACADEMICS'])[1]")).click();
+
+        Thread.sleep(1000);
+
+        
+        driver.findElement(By.xpath("(//a[text()='SYLLABUS'])[1]")).click();
+
+        Thread.sleep(1000);
+
+        
+        driver.findElement(By.xpath("(//a[text()='B.Tech Syllabus'])[1]")).click();
+
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("(//a[text()='Computer Science and Engineering'])[1]")).click();
+
+        Thread.sleep(1000);
+
+        driver.quit();
+    }
 }
