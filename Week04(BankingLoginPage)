@@ -1,32 +1,34 @@
+import java.time.Duration;
 import java.util.HashMap;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class Att {
-
+public class PopupHandling {
     public static void main(String[] args) {
 
-        HashMap<String, Object> prefs = new HashMap<String, Object>();
-
-        prefs.put("profile.default_content_setting_values.notifications", 0);
+        HashMap<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.default_content_setting_values.notifications", 2);
 
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);
 
-        System.setProperty("webdriver.chrome.driver", "");
-
         WebDriver driver = new ChromeDriver(options);
-
         driver.manage().window().maximize();
 
-        driver.get("https://www.axisbank.com/");
+        driver.get("https://netbanking.kotak.com");
 
-        WebElement pop = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/span"));
-        pop.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+        driver.findElement(By.id("loginBtn")).click();
+
+        Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
+        alert.accept();
+
+        driver.quit();
     }
 }
