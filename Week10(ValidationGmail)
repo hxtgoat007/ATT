@@ -2,79 +2,80 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Week10 {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver","");
+        // Set correct ChromeDriver path
+        System.setProperty("webdriver.chrome.driver","E:\\GIT\\chromedriver-win64\\chromedriver.exe");
 
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
 
-        driver.get("http://gmail.com");
+        WebDriver driver = new ChromeDriver(options);
 
-        Thread.sleep(2000);
+      
+        driver.get("https://accounts.google.com/signup");
 
-        WebElement createAccount = driver.findElement(By.xpath("//span[normalize-space()='Create account'][1]"));
-        createAccount.click();
+        Thread.sleep(3000);
 
-        Thread.sleep(2000);
-
-        WebElement mySelf = driver.findElement(By.xpath("//span[normalize-space()='For my personal use'][1]"));
-        mySelf.click();
-
-        Thread.sleep(2000);
 
         WebElement firstName = driver.findElement(By.name("firstName"));
         firstName.sendKeys("Mohsen");
-
-        Thread.sleep(2000);
 
         WebElement lastName = driver.findElement(By.name("lastName"));
         lastName.sendKeys("Peddy");
 
         Thread.sleep(2000);
 
-        WebElement bn1 = driver.findElement(By.xpath("//span[normalize-space()='Next']"));
+        WebElement bn1 = driver.findElement(By.xpath("//span[text()='Next']"));
         bn1.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
-        Select month = new Select(driver.findElement(By.xpath("//select[@id='month'][1]")));
+        
+        Select month = new Select(driver.findElement(By.id("month")));
         month.selectByValue("6");
 
-        WebElement day = driver.findElement(By.xpath("//input[@id='day'][1]"));
+  
+        WebElement day = driver.findElement(By.id("day"));
         day.sendKeys("21");
 
-        WebElement year = driver.findElement(By.xpath("//input[@id='year'][1]"));
+        
+        WebElement year = driver.findElement(By.id("year"));
         year.sendKeys("2007");
 
-        Select gender = new Select(driver.findElement(By.xpath("//select[@id='gender'][1]")));
+        Select gender = new Select(driver.findElement(By.id("gender")));
         gender.selectByValue("1");
 
         Thread.sleep(2000);
 
-        WebElement bn2 = driver.findElement(By.xpath("//span[normalize-space()='Next']"));
+   
+        WebElement bn2 = driver.findElement(By.xpath("//span[text()='Next']"));
         bn2.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
+      
         WebElement uid = driver.findElement(By.name("Username"));
-        uid.sendKeys("k");
+        uid.sendKeys("mohsenpeddy12345");
 
-        WebElement bn3 = driver.findElement(By.xpath("//span[normalize-space()='Next']"));
+        WebElement bn3 = driver.findElement(By.xpath("//span[text()='Next']"));
         bn3.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
+    
         WebElement pswd = driver.findElement(By.name("Passwd"));
         pswd.sendKeys("Cmit123#");
 
         WebElement cpswd = driver.findElement(By.name("ConfirmPasswd"));
         cpswd.sendKeys("Cmit123#");
 
-        WebElement bn4 = driver.findElement(By.xpath("//span[normalize-space()='Next']"));
+        WebElement bn4 = driver.findElement(By.xpath("//span[text()='Next']"));
         bn4.click();
     }
 }
