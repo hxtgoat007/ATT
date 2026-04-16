@@ -21,7 +21,7 @@ public class Week11 {
         driver.get("https://www.myntra.com/");
         WebElement profile = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Profile']")));
         actions.moveToElement(profile).perform();
-        WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='login / Signup']")));
+        WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Login / Signup']")));
         loginBtn.click();
         WebElement mobile = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='tel']")));
         mobile.sendKeys("9100101625");
